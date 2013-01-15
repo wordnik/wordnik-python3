@@ -73,7 +73,7 @@ class ApiClient:
         request = urllib.request.urlopen(requestParams)
         encoding = request.headers.get_content_charset()
         if not encoding:
-            encoding = 'iso-8859-1'
+            encoding = 'utf-8'
         response = request.read().decode(encoding)
 
         try:
