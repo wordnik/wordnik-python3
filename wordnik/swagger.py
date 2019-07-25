@@ -129,7 +129,7 @@ class ApiClient:
         # native Python type, or one of the model classes.
         if type(objClass) == str:
             if 'list[' in objClass:
-                match = re.match('list\[(.*)\]', objClass)
+                match = re.match(r'list\[(.*)\]', objClass)
                 subClass = match.group(1)
                 return [self.deserialize(subObj, subClass) for subObj in obj]
 
@@ -164,7 +164,7 @@ class ApiClient:
                     setattr(instance, attr, datetime.datetime.strptime(value[:-5],
                                               "%Y-%m-%dT%H:%M:%S.%f"))
                 elif 'list[' in attrType:
-                    match = re.match('list\[(.*)\]', attrType)
+                    match = re.match(r'list\[(.*)\]', attrType)
                     subClass = match.group(1)
                     subValues = []
                     if not value:
