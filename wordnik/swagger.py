@@ -162,7 +162,7 @@ class ApiClient:
                     setattr(instance, attr, value)
                 elif (attrType == 'datetime'):
                     setattr(instance, attr, datetime.datetime.strptime(value[:-5],
-                                              "%Y-%m-%dT%H:%M:%S.%f"))
+                                              "%Y-%m-%dT%H:%M:%S"))
                 elif 'list[' in attrType:
                     match = re.match('list\[(.*)\]', attrType)
                     subClass = match.group(1)
